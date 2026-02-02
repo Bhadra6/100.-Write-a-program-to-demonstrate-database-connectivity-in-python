@@ -1,1 +1,25 @@
-# 100.-Write-a-program-to-demonstrate-database-connectivity-in-python
+import mysql.connector
+
+conn = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    passwd='',
+    database='db1'
+)
+
+cursor = conn.cursor()
+cursor.execute("insert into books values (101,'Python')")
+conn.commit()
+
+print("record inserted successfully")
+
+cursor.execute("select * from books")
+result = cursor.fetchall()
+print(result)
+
+conn.close()
+
+
+output:
+record inserted successfully
+[(101, 'Python')]
